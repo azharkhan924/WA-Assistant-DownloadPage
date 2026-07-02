@@ -45,29 +45,32 @@
     z-index: 0;
   }
 
-  .wrap{ max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1;}
+  .wrap{ max-width: 1100px; margin: 0 auto; padding: 0 clamp(18px, 5vw, 24px); position: relative; z-index: 1;}
 
   /* NAV */
   nav{
     display:flex; align-items:center; justify-content:space-between;
-    padding: 28px 0;
+    gap: 12px;
+    padding: clamp(18px, 4vw, 28px) 0;
     border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
   }
   .logo{
     font-family: var(--font-mono);
     font-weight: 600;
-    font-size: 15px;
+    font-size: clamp(12.5px, 2.2vw, 15px);
     color: var(--text);
     display:flex; align-items:center; gap:8px;
+    word-break: break-word;
   }
-  .logo .dot{ width:8px; height:8px; border-radius:50%; background: var(--wa-green); box-shadow: 0 0 8px var(--wa-green);}
+  .logo .dot{ width:8px; height:8px; border-radius:50%; background: var(--wa-green); box-shadow: 0 0 8px var(--wa-green); flex-shrink:0;}
   .navlink{ color: var(--muted); text-decoration:none; font-size:14px; font-weight:500;}
   .navlink:hover{ color: var(--text); }
 
   /* HERO */
   .hero{
-    display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px;
-    padding: 90px 0 100px;
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(30px, 5vw, 60px);
+    padding: clamp(40px, 8vw, 90px) 0 clamp(50px, 8vw, 100px);
     align-items:center;
   }
   .eyebrow{
@@ -84,7 +87,7 @@
 
   h1{
     font-family: var(--font-display);
-    font-size: 52px;
+    font-size: clamp(32px, 6.5vw, 52px);
     font-weight: 800;
     line-height: 1.08;
     letter-spacing: -0.02em;
@@ -94,7 +97,7 @@
 
   .lede{
     color: var(--muted);
-    font-size: 17px;
+    font-size: clamp(14.5px, 2.2vw, 17px);
     max-width: 480px;
     margin-bottom: 34px;
   }
@@ -103,7 +106,7 @@
   .cta-row{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom: 36px;}
 
   .btn-download{
-    display:inline-flex; align-items:center; gap:10px;
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
     background: var(--wa-green);
     color: #06170d;
     font-family: var(--font-display);
@@ -115,12 +118,15 @@
     border: 1px solid var(--wa-green);
     transition: transform 0.15s ease, box-shadow 0.15s ease;
     box-shadow: 0 0 0 0 rgba(37,211,102,0.5);
+    width: 100%;
+    max-width: 260px;
   }
   .btn-download:hover{ transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.25);}
-  .btn-download svg{ width:18px; height:18px; }
+  .btn-download:active{ transform: translateY(0); }
+  .btn-download svg{ width:18px; height:18px; flex-shrink:0; }
 
   .btn-secondary{
-    display:inline-flex; align-items:center; gap:8px;
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
     color: var(--text);
     font-size: 14.5px;
     font-weight: 600;
@@ -129,6 +135,8 @@
     border: 1px solid var(--border);
     border-radius: 10px;
     background: var(--surface);
+    width: 100%;
+    max-width: 200px;
   }
   .btn-secondary:hover{ border-color: #484f58; }
 
@@ -136,15 +144,15 @@
     font-family: var(--font-mono);
     font-size: 12.5px;
     color: var(--muted);
-    display:flex; gap: 20px; flex-wrap:wrap;
+    display:flex; gap: clamp(12px, 3vw, 20px); flex-wrap:wrap;
   }
   .meta-line span{ display:flex; align-items:center; gap:6px; }
   .meta-line .v{ color: var(--text); font-weight:600; }
 
   /* PHONE MOCKUP - signature element */
-  .phone-stage{ display:flex; justify-content:center; }
+  .phone-stage{ display:flex; justify-content:center; width: 100%; }
   .phone{
-    width: 300px;
+    width: min(300px, 78vw);
     background: #000;
     border-radius: 36px;
     padding: 10px;
@@ -154,7 +162,7 @@
     background: #0b141a;
     border-radius: 26px;
     overflow:hidden;
-    height: 520px;
+    height: min(520px, 84vw);
     display:flex; flex-direction:column;
   }
   .chat-header{
@@ -204,13 +212,13 @@
   @keyframes blink{ 0%,60%,100%{opacity:0.3;} 30%{opacity:1;} }
 
   /* FEATURES */
-  .section{ padding: 70px 0; border-top: 1px solid var(--border); }
-  .section-head{ margin-bottom: 44px; max-width: 560px; }
+  .section{ padding: clamp(44px, 8vw, 70px) 0; border-top: 1px solid var(--border); }
+  .section-head{ margin-bottom: clamp(28px, 5vw, 44px); max-width: 560px; }
   .section-label{
     font-family: var(--font-mono); font-size: 12px; color: var(--accent);
     text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;
   }
-  h2{ font-family: var(--font-display); font-size: 30px; font-weight: 700; letter-spacing:-0.01em; }
+  h2{ font-family: var(--font-display); font-size: clamp(22px, 4.2vw, 30px); font-weight: 700; letter-spacing:-0.01em; }
   .section-head p{ color: var(--muted); margin-top: 10px; font-size:15px; }
 
   .grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -254,12 +262,34 @@
   .footlinks a{ color: var(--muted); text-decoration:none; font-size:13px; }
   .footlinks a:hover{ color: var(--text); }
 
+  /* TABLET */
   @media (max-width: 860px){
-    .hero{ grid-template-columns: 1fr; padding-top: 50px;}
-    .phone-stage{ order:-1; margin-bottom: 20px;}
-    h1{ font-size: 38px; }
+    .hero{ grid-template-columns: 1fr; }
+    .phone-stage{ order:-1; margin-bottom: 30px;}
+    .lede{ max-width: 100%; }
     .grid{ grid-template-columns: repeat(2,1fr); }
     .steps{ grid-template-columns: 1fr; }
+  }
+
+  /* MOBILE */
+  @media (max-width: 560px){
+    nav{ justify-content: center; text-align:center; }
+    .navlink{ display:none; }
+    .hero{ text-align:center; }
+    .eyebrow{ justify-content:center; }
+    .lede{ margin-left:auto; margin-right:auto; }
+    .cta-row{ justify-content:center; }
+    .btn-download, .btn-secondary{ max-width: none; flex: 1 1 140px; }
+    .meta-line{ justify-content:center; }
+    .grid{ grid-template-columns: 1fr; }
+    footer{ flex-direction:column; text-align:center; }
+    .footlinks{ justify-content:center; }
+  }
+
+  /* very narrow devices */
+  @media (max-width: 360px){
+    .phone{ width: 84vw; }
+    .phone-screen{ height: 90vw; }
   }
 </style>
 </head>
@@ -288,7 +318,7 @@
 
       <div class="meta-line">
         <span>Version <span class="v">v1.0</span></span>
-        <span>Size <span class="v">~18 MB</span></span>
+        <span>Size <span class="v">~80 MB</span></span>
         <span>Platform <span class="v">Android 8+</span></span>
       </div>
     </div>
